@@ -3,9 +3,9 @@ import numpy as np
 import pickle
 import matplotlib.pyplot as plt
 
-haar = cv2.CascadeClassifier(r'C:\Users\jyash\Desktop\face reco\model\haarcascade_frontalface_default.xml')
-model_svm = pickle.load(open(r'C:\Users\jyash\Desktop\face reco\model\final_model','rb'))
-pca_model = pickle.load(open(r'C:\Users\jyash\Desktop\face reco\model\pca_dict.pickle','rb'))
+haar = cv2.CascadeClassifier(r'flask_app_deploy\model\haarcascade_frontalface_default.xml')
+model_svm = pickle.load(open(r'flask_app_deploy\model\final_model','rb'))
+pca_model = pickle.load(open(r'flask_app_deploy\model\pca_dict.pickle','rb'))
 model_pca = pca_model['pca']
 mean_face = pca_model['mean_face']
 
