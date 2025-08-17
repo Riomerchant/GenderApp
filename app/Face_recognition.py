@@ -2,10 +2,14 @@ import cv2
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
-
-haar = cv2.CascadeClassifier(r'flask_app_deploy\model\haarcascade_frontalface_default.xml')
-model_svm = pickle.load(open(r'flask_app_deploy\model\final_model','rb'))
-pca_model = pickle.load(open(r'flask_app_deploy\model\pca_dict.pickle','rb'))
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+haarcascade_path = os.path.join(BASE_DIR, 'model', 'haarcascade_frontalface_default.xml')
+model_path = os.path.join(BASE_DIR, 'model', 'final_model')
+pca_path = os.path.join(BASE_DIR, 'model', 'pca_dict.pickle')
+haar = cv2.CascadeClassifier(haarcascade_path)
+model_svm = pickle.load(open(model_path,'rb'))
+pca_model = pickle.load(open(pca_path,'rb'))
 model_pca = pca_model['pca']
 mean_face = pca_model['mean_face']
 
