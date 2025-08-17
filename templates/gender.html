@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+<div class="container">
+    <br><br>
+    <div class="row" style="color: aliceblue;">
+        <div class="col">
+<!-- upload the image -->
+            <h3 class="display-8">Gender  Classification</h3>
+            <p>upload an image (.jpg, .jpeg, .png)
+                our model will detect face first and then predict gender
+                based on face (Male or Female)
+            </p>
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <div class="input-group">
+                    <input type="file" class="form-control" name="image_name" required>
+                    <input type="submit" value="upload and predict" class="btn btn-outline-primary">
+                </div>
+            </form>
+        </div>
+        <div class="col-8">
+<!-- report prediction image,reporting (grayscale ,eign value) -->
+<!-- predicted image-->
+            {% if fileupload %}
+            <h3 class="display-8">Predicted Image</h3>
+            <br><br>
+            <img src="/static/predict/prediction _image.jpg" alt=""  width="500" class="image-fluid">
+            <!-- reporting -->
+             <hr>
+             <br>
+             <table class="table table-hover table-striped">
+                <tr>
+                    <th>Detection face</th>
+                    <th>Eigen Image</th>
+                    <th>Prediction Image</th>
+                    <th>Score</th>
+                </tr>
+                {% for ele in report %}
+                <tr>
+                    <td>
+                        <img src="/static/predict/{{ ele[0] }}" height = "100" class = "image-fluid" alt="">
+                    </td>
+                    <td>
+                      <img src="/static/predict/{{ ele[1] }}" height = "100" class = "image-fluid" alt="">  
+                    </td>
+                    <td>
+                        {{ ele[2] }}
+                    </td>
+                    <td>
+                        {{  ele[3] }}
+                    </td>
+                </tr>
+                {% endfor %}
+             </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
